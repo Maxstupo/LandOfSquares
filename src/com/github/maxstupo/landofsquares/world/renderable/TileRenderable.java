@@ -1,0 +1,43 @@
+package com.github.maxstupo.landofsquares.world.renderable;
+
+import java.awt.Graphics2D;
+
+import com.github.maxstupo.flatengine.util.math.Vector2f;
+import com.github.maxstupo.flatengine.util.math.Vector2i;
+import com.github.maxstupo.landofsquares.util.Calc;
+import com.github.maxstupo.landofsquares.world.Tile;
+import com.github.maxstupo.landofsquares.world.World;
+import com.github.maxstupo.landofsquares.world.block.Block;
+
+/**
+ *
+ * @author Maxstupo
+ */
+public class TileRenderable implements IRenderable {
+
+    private final World world;
+    private final int x, y;
+
+    public TileRenderable(World world, int x, int y) {
+        this.world = world;
+        this.x = x;
+        this.y = y;
+    }
+
+    @Override
+    public void render(Graphics2D g, Vector2f camera, int tileSize, int windowWidth, int windowHeight) {
+        Vector2i pos = Calc.drawLocation(x, y, camera, tileSize);
+
+        Tile tile = world.getTile(x, y);
+        Block block = tile.convertToBlock();
+
+        if (block != null)
+            block.render(g, world, pos.x, pos.y, x, y, tile.getData());
+    }
+
+    @Override
+    public RenderDepth getDepth() {
+        return RenderDepth.TILE;
+    }
+
+}

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assets>
+	<font path="res/gfx/font/SUN.ttf" />
+
+	<sprite key="block_grass" path="/res/gfx/block/block_grass.png" />
+	<sprite key="block_dirt" path="/res/gfx/block/block_dirt.png" />
+	<sprite key="block_stone" path="/res/gfx/block/block_stone.png" />
+	<sprite key="block_cobblestone" path="/res/gfx/block/block_cobblestone.png" />
+	<sprite key="block_bedrock" path="/res/gfx/block/block_bedrock.png" />
+
+	<sprite key="block_log" path="/res/gfx/block/block_log.png" />
+	<sprite key="block_leaf" path="/res/gfx/block/block_leaf.png" />
+
+	<sprite key="block_plank" path="/res/gfx/block/block_plank.png" />
+	<sprite key="block_ladder" path="/res/gfx/block/block_ladder.png" />
+
+	<sprite key="block_sapling" path="/res/gfx/block/block_plant_sapling.png" />
+	<sprite key="block_ore_coal" path="/res/gfx/block/block_ore_coal.png" />
+	<sprite key="block_ore_iron" path="/res/gfx/block/block_ore_iron.png" />
+	<sprite key="block_ore_gold" path="/res/gfx/block/block_ore_gold.png" />
+	<sprite key="block_ore_diamond" path="/res/gfx/block/block_ore_diamond.png" />
+
+	<sprite key="block_sand" path="/res/gfx/block/block_sand.png" />
+	<sprite key="block_gravel" path="/res/gfx/block/block_gravel.png" />
+
+	<sprite key="block_torch" path="/res/gfx/block/block_torch.png" />
+
+	<sprite key="item_stick" path="/res/gfx/item/item_stick.png" />
+	<sprite key="item_coal" path="/res/gfx/item/item_coal.png" />
+	<sprite key="item_diamond" path="/res/gfx/item/item_diamond.png" />
+	<sprite key="item_ingot_iron" path="/res/gfx/item/item_ingot_iron.png" />
+	<sprite key="item_ingot_gold" path="/res/gfx/item/item_ingot_gold.png" />
+
+
+	<sprite key="item_tool_stone_pickaxe" path="/res/gfx/item/item_tool_stone_pickaxe.png" />
+	<sprite key="item_tool_stone_spade" path="/res/gfx/item/item_tool_stone_spade.png" />
+	<sprite key="item_tool_stone_axe" path="/res/gfx/item/item_tool_stone_axe.png" />
+
+	<sprite key="item_tool_iron_pickaxe" path="/res/gfx/item/item_tool_iron_pickaxe.png" />
+	<sprite key="item_tool_iron_spade" path="/res/gfx/item/item_tool_iron_spade.png" />
+	<sprite key="item_tool_iron_axe" path="/res/gfx/item/item_tool_iron_axe.png" />
+
+	<sprite key="item_tool_diamond_pickaxe" path="/res/gfx/item/item_tool_diamond_pickaxe.png" />
+	<sprite key="item_tool_diamond_spade" path="/res/gfx/item/item_tool_diamond_spade.png" />
+	<sprite key="item_tool_diamond_axe" path="/res/gfx/item/item_tool_diamond_axe.png" />
+
+
+
+	<sprite key="player_left" path="/res/gfx/mob/player/player_stand_left.png" />
+	<sprite key="player_right" path="/res/gfx/mob/player/player_stand_right.png" />
+
+
+
+
+	<sprite key="blockbreak_stage_0" path="/res/gfx/block/ani_blockbreak_0.png" />
+	<sprite key="blockbreak_stage_1" path="/res/gfx/block/ani_blockbreak_1.png" />
+	<sprite key="blockbreak_stage_2" path="/res/gfx/block/ani_blockbreak_2.png" />
+	<sprite key="blockbreak_stage_3" path="/res/gfx/block/ani_blockbreak_3.png" />
+	<sprite key="blockbreak_stage_4" path="/res/gfx/block/ani_blockbreak_4.png" />
+	<sprite key="blockbreak_stage_5" path="/res/gfx/block/ani_blockbreak_5.png" />
+	<sprite key="blockbreak_stage_6" path="/res/gfx/block/ani_blockbreak_6.png" />
+	<sprite key="blockbreak_stage_7" path="/res/gfx/block/ani_blockbreak_7.png" />
+	<sprite key="blockbreak_stage_8" path="/res/gfx/block/ani_blockbreak_8.png" />
+	<sprite key="blockbreak_stage_9" path="/res/gfx/block/ani_blockbreak_9.png" />
+</assets>

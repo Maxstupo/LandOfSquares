@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<animations>
+	<group id="0">
+		<animation id="idle_left">
+			<frame sprite="player_left" duration="-1" />
+		</animation>
+		
+		<animation id="idle_right">
+			<frame sprite="player_right" duration="-1" />
+		</animation>
+
+		<animation id="walk_left">
+			<frame sprite="player_left" duration="-1" />
+		</animation>
+		
+		<animation id="walk_right">
+			<frame sprite="player_right" duration="-1" />
+		</animation>
+	</group>
+
+</animations>
