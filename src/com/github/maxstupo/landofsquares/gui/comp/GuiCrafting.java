@@ -61,6 +61,9 @@ public class GuiCrafting extends AbstractGuiNode<State> {
                 return canCreateRecipe(item) ? Color.GREEN : Color.RED;
             }
         };
+        recipes.setBarColor(Color.LIGHT_GRAY);
+        recipes.setBarBackgroundColor(Color.GRAY);
+
         recipes.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
         recipes.addListener(new IEventListener<GuiList<State, Recipe>, Integer, Integer>() {
 
@@ -105,7 +108,6 @@ public class GuiCrafting extends AbstractGuiNode<State> {
 
     @Override
     public void render(Graphics2D g) {
-
         Vector2i gpos = getGlobalPosition();
         g.setColor(Color.GRAY);
         g.fill3DRect(gpos.x, gpos.y, size.x, size.y, true);
