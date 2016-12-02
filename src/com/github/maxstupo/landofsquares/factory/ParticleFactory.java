@@ -24,8 +24,6 @@ public final class ParticleFactory {
         amount = UtilMath.clampI(amount, 1, Constants.MAX_PARTICLES_PER_EFFECT);
 
         for (int i = 0; i < amount; i++) {
-            if (w.getParticleManager().getTotalEntities() + 1 > Constants.MAX_PARTICLES_PER_EFFECT)
-                continue;
 
             float vx = (Rand.instance.nextFloat() * power - (power / 2)) / Constants.TILE_SIZE;
             float vy = (Rand.instance.nextFloat() * power - (power / 2)) / Constants.TILE_SIZE;
@@ -34,6 +32,8 @@ public final class ParticleFactory {
             p.getVelocity().set(vx, vy);
             w.getParticleManager().addEntity(p);
         }
+
+        checkLimit(w);
     }
 
     public void createDirectionalExplosionEffect(World w, Vector2f pos, float size, int angleMin, int angleMax, ColorRange cr, float shakiness, float power, float chance, int aliveMin, int aliveMax) {
@@ -41,12 +41,6 @@ public final class ParticleFactory {
         for (int angle = angleMin; angle < angleMax; angle++) {
 
             if (Rand.instance.nextFloat() <= chance) {
-                if (w.getParticleManager().getTotalEntities() + 1 > Constants.MAX_PARTICLES_PER_EFFECT) // TODO: Find a better way to do this check.
-                                                                                                        // (Doesn't share the particles between
-                                                                                                        // multiple calls, so one torch might have no
-                                                                                                        // particles while the rest have some)
-                    continue;
-
                 float dx = (float) (power * Math.cos(Math.toRadians(angle))) / Constants.TILE_SIZE;
                 float dy = (float) (power * Math.sin(Math.toRadians(angle))) / Constants.TILE_SIZE;
 
@@ -54,6 +48,18 @@ public final class ParticleFactory {
                 p.getVelocity().set(dx, dy);
                 w.getParticleManager().addEntity(p);
             }
+        }
+
+        checkLimit(w);
+    }
+
+    public static void checkLimit(World w) {
+        int extra = w.getParticleManager().getTotalEntities() - Constants.MAX_PARTICLES_PER_EFFECT;
+        if (extra <= 0)
+            return;
+
+        for (int i = 0; i < extra; i++) {
+            w.getParticleManager().getEntities().get(i).setDead();
         }
     }
 
