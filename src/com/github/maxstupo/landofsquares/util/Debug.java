@@ -68,12 +68,18 @@ public class Debug {
                     "SP: " + w.getSpawnpoint(), //
                     "BT: " + block.getBreakTicks(p.getHotbarSelectedItem()));
 
+            g.setColor(Color.white);
+            Vector2i tpos = Calc.drawLocation(pos, LandOfSquares.get().getCamera(), Constants.TILE_SIZE);
+            g.drawRect(tpos.x, tpos.y, Constants.TILE_SIZE, Constants.TILE_SIZE);
+
+            g.setColor(Color.black);
             Tile tile = LandOfSquares.get().getWorldManager().getWorld().getTile(pos.x, pos.y);
             UtilGraphics.drawString(g, LandOfSquares.get().getEngine().getMouse().getPosition().x + 15, LandOfSquares.get().getEngine().getMouse().getPosition().y, 5, //
                     "ID: " + block.id, //
                     "DATA: " + tile.getData(), //
                     "TICK: " + tile.getTick() + " / " + tile.getTickTotal()//
             );
+
         }
 
         if (contains(GRID_CHUNKS_ENTITIES)) {
