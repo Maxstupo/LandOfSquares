@@ -22,11 +22,11 @@ public class BlockTorch extends Block {
 
     @Override
     public void update(World world, int x, int y, int data) {
-        ParticleFactory.get().createDirectionalExplosionEffect(world, new Vector2f(x + 0.53f, y + 0.38f), .1f, -180, 0, colorRange, 0.02f, 0.1f, 0.1f, 50, 250);
+        ParticleFactory.get().createDirectionalExplosionEffect(world, new Vector2f(x + 0.49f, y + 0.3f), .1f, -180, 0, colorRange, 0.02f, 0.1f, 0.1f, 50, 250);
     }
 
     @Override
     public int updateRate(World world, int x, int y, int data) {
-        return Rand.instance.nextIntRange(100, 1000);
+        return Rand.instance.nextIntRange(50, 250);
     }
 }
