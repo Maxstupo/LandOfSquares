@@ -85,6 +85,12 @@ public final class LandOfSquares {
         worldManager.save();
     }
 
+    public void quitToMainmenu() {
+        save();
+        worldManager.clear();
+        engine.switchTo(State.MAINMENU);
+    }
+
     private void initAssets() {
         AssetManager.get().loadAssets(log, Constants.ASSETS_LIST_PATH);
         AssetManager.get().loadAnimationsFromXml(log, Constants.ANIMATION_LIST_PATH);

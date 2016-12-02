@@ -110,6 +110,10 @@ public class WorldManager {
         return true;
     }
 
+    public void clear() {
+        currentWorld = null;
+    }
+
     public EntityPlayer getPlayer() {
         return player;
     }
@@ -131,4 +135,5 @@ public class WorldManager {
         if (!SAVE_FOLDER.exists())
             SAVE_FOLDER.mkdirs();
     }
+
 }

@@ -26,6 +26,7 @@ public class GuiManager {
     public GuiManager(AbstractGamestate<State> gamestate) {
         this.gamestate = gamestate;
         add(new GuiInventory(gamestate, "inventory"));
+        add(new GuiPauseMenu(gamestate, "pausemenu"));
         addHud(new GuiHud(gamestate));
     }
 
