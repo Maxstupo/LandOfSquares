@@ -43,7 +43,7 @@ public class GuiHud extends AbstractGui {
             ItemStack stack = inv[i][inv[0].length - 1];
 
             GuiItemSlot.renderBackground(g, pos, Constants.GUI_SLOT_SIZE);
-            GuiItemSlot.renderItem(g, pos, stack, Constants.GUI_SLOT_SIZE);
+            GuiItemSlot.renderItem(g, pos.addLocal(1, 1), stack, Constants.GUI_SLOT_SIZE);
 
             if (i == hotbarSelected) {
                 g.setColor(Color.BLUE);
@@ -51,7 +51,7 @@ public class GuiHud extends AbstractGui {
                 Stroke defaultStroke = g.getStroke();
                 g.setStroke(new BasicStroke(3));
 
-                g.drawRect(pos.x, pos.y, Constants.GUI_SLOT_SIZE, Constants.GUI_SLOT_SIZE);
+                g.drawRect(pos.x - 1, pos.y - 1, Constants.GUI_SLOT_SIZE, Constants.GUI_SLOT_SIZE);
                 g.setStroke(defaultStroke);
             }
         }
