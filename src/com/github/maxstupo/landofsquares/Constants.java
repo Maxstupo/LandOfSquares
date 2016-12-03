@@ -40,6 +40,9 @@ public final class Constants {
     public static final int ENTITY_CHUNK_SIZE = 16;
     public static final int PARTICLE_CHUNK_SIZE = 8;
 
+    public static final int DEFAULT_WORLD_WIDTH = ENTITY_CHUNK_SIZE * 100;
+    public static final int DEFAULT_WORLD_HEIGHT = ENTITY_CHUNK_SIZE * 25;
+
     private Constants() {
     }
 

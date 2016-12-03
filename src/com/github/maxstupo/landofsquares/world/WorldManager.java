@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.github.maxstupo.flatengine.util.math.Vector2f;
+import com.github.maxstupo.landofsquares.Constants;
 import com.github.maxstupo.landofsquares.core.LandOfSquares;
 import com.github.maxstupo.landofsquares.entity.EntityPlayer;
 import com.github.maxstupo.landofsquares.states.State;
@@ -100,8 +101,13 @@ public class WorldManager {
         if (savegameFolder.exists())
             return false;
 
-        World world1 = new World(0, "Earth", WorldDefinition.earth, Generator.earth, 16 * 100, 16 * 25, seed); // We dont generate the world just
-                                                                                                               // define it.
+        World world1 = new World(0, "Earth", WorldDefinition.earth, Generator.earth, Constants.DEFAULT_WORLD_WIDTH, Constants.DEFAULT_WORLD_HEIGHT, seed); // We
+                                                                                                                                                           // dont
+                                                                                                                                                           // generate
+                                                                                                                                                           // the
+                                                                                                                                                           // world
+                                                                                                                                                           // just
+        // define it.
         io.saveWorld(savegameFolder, world1);
 
         EntityPlayer p = new EntityPlayer(0, new Vector2f(-1, -1));
