@@ -18,6 +18,7 @@ public class BlockTorch extends Block {
     public BlockTorch(int id) {
         super(id, BlockMaterial.wood);
         setCollidable(false);
+        setHardness(0);
     }
 
     @Override
