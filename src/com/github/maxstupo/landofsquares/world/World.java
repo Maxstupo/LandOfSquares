@@ -50,8 +50,8 @@ public class World {
 
     private Tile[][] tiles;
 
-    private EntityManager entityManager;
-    private EntityManager particleManager;
+    private final EntityManager entityManager;
+    private final EntityManager particleManager;
 
     private final List<IRenderable> entitiesToRender = new ArrayList<>();
 
