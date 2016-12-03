@@ -255,4 +255,9 @@ public abstract class AbstractEntity implements IRenderable {
     public int getDirection() {
         return direction;
     }
+
+    @Override
+    public String toString() {
+        return String.format("AbstractEntity [position=%s, velocity=%s, size=%s, type=%s, isCollidable=%s, isGravityEffected=%s, isDead=%s, onGround=%s, ticksAlive=%s, isMoving=%s, direction=%s]", position, velocity, size, type, isCollidable, isGravityEffected, isDead, onGround, ticksAlive, isMoving, direction);
+    }
 }
