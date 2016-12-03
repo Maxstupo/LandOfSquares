@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.ListIterator;
 
 import com.github.maxstupo.flatengine.util.Util;
 import com.github.maxstupo.flatengine.util.math.Rand;
@@ -144,11 +145,17 @@ public class World {
         // Add player to render.
         entitiesToRender.add(LandOfSquares.get().getWorldManager().getPlayer());
 
+        // Sort entities on Z depth.
         Collections.sort(entitiesToRender, DEPTH_COMPARATOR);
-        for (IRenderable r : entitiesToRender)
+
+        // Render all entities.
+        ListIterator<IRenderable> it = entitiesToRender.listIterator();
+        while (it.hasNext()) {
+            IRenderable r = it.next();
             r.render(g, camera, tileSize, windowWidth, windowHeight);
 
-        entitiesToRender.clear();
+            it.remove();
+        }
     }
 
     public boolean breakBlockByEntity(AbstractLivingEntity e, int x, int y, ItemStack item) {
