@@ -404,6 +404,55 @@ public class World {
     }
 
     @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + height;
+        result = prime * result + id;
+        result = prime * result + (isGenerated ? 1231 : 1237);
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + (int) (seed ^ (seed >>> 32));
+        result = prime * result + ((spawnpoint == null) ? 0 : spawnpoint.hashCode());
+        result = prime * result + (int) (totalTicks ^ (totalTicks >>> 32));
+        result = prime * result + width;
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        World other = (World) obj;
+        if (height != other.height)
+            return false;
+        if (id != other.id)
+            return false;
+        if (isGenerated != other.isGenerated)
+            return false;
+        if (name == null) {
+            if (other.name != null)
+                return false;
+        } else if (!name.equals(other.name))
+            return false;
+        if (seed != other.seed)
+            return false;
+        if (spawnpoint == null) {
+            if (other.spawnpoint != null)
+                return false;
+        } else if (!spawnpoint.equals(other.spawnpoint))
+            return false;
+        if (totalTicks != other.totalTicks)
+            return false;
+        if (width != other.width)
+            return false;
+        return true;
+    }
+
+    @Override
     public String toString() {
         return "World [id=" + id + ", name=" + name + ", totalTicks=" + totalTicks + ", def=" + def + ", generator=" + generator + ", width=" + width + ", height=" + height + ", seed=" + seed + ", isGenerated=" + isGenerated + ", spawnpoint=" + spawnpoint + "]";
     }
