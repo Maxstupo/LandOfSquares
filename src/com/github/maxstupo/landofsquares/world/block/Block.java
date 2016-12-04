@@ -65,6 +65,9 @@ public class Block {
 
     protected String name;
 
+    protected int lightEmiting;
+    protected int lightBlocking;
+
     public Block(int id, BlockMaterial material) {
         this.material = material;
         this.id = id;
@@ -301,6 +304,24 @@ public class Block {
 
     public float getBlockHardness() {
         return hardness;
+    }
+
+    public Block setLightBlocking(int lightBlocking) {
+        this.lightBlocking = lightBlocking;
+        return this;
+    }
+
+    public int getLightBlocking() {
+        return lightBlocking;
+    }
+
+    public Block setLightEmiting(int lightEmiting) {
+        this.lightEmiting = lightEmiting;
+        return this;
+    }
+
+    public int getLightEmiting() {
+        return lightEmiting;
     }
 
     public static boolean isValid(int id) {
