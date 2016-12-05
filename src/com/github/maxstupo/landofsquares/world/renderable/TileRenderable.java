@@ -30,15 +30,15 @@ public class TileRenderable implements IRenderable {
     public void render(Graphics2D g, Vector2f camera, int tileSize, int windowWidth, int windowHeight) {
         Vector2i pos = Calc.drawLocation(x, y, camera, tileSize);
 
+        int alpha = world.getLightingSystem().getLightValueConverted(x, y);
         Tile tile = world.getTile(x, y);
         Block block = tile.convertToBlock();
 
-        if (block != null)
+        if (block != null && alpha < 255)
             block.render(g, world, pos.x, pos.y, x, y, tile.getData());
 
-        int alpha = world.getLightingSystem().getLightValueConverted(x, y);
         if (alpha > 0) {
-            g.setColor(new Color(32, 32, 32, alpha));
+            g.setColor(new Color(16, 16, 16, alpha));
             g.fillRect(pos.x, pos.y, Constants.TILE_SIZE, Constants.TILE_SIZE);
         }
     }

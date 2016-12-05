@@ -29,7 +29,7 @@ public class Block {
 
     public static final Block grass = new BlockGrass(1).setName("Grass").setSpriteKey("block_grass");
     public static final Block dirt = new Block(2, BlockMaterial.earth).setName("Dirt").setSpriteKey("block_dirt");
-    public static final Block stone = new BlockStone(3).setName("Stone").setSpriteKey("block_stone");
+    public static final Block stone = new BlockStone(3).setName("Stone").setSpriteKey("block_stone").setLightBlocking(5);
     public static final Block cobblestone = new Block(4, BlockMaterial.rock).setName("Cobblestone").setSpriteKey("block_cobblestone");
     public static final Block bedrock = new Block(5, BlockMaterial.rock).setName("Bedrock").setSpriteKey("block_bedrock").setBlockUnbreakable();
 
@@ -48,7 +48,7 @@ public class Block {
     public static final Block gravel = new BlockGravityEffected(15, BlockMaterial.rock).setName("Gravel").setSpriteKey("block_gravel");
 
     public static final Block plant_sapling = new BlockSapling(16).setName("Sapling").setSpriteKey("block_sapling");
-    public static final Block torch = new BlockTorch(17).setName("Torch").setSpriteKey("block_torch");
+    public static final Block torch = new BlockTorch(17).setLightEmiting(8).setName("Torch").setSpriteKey("block_torch");
 
     public final int id;
 

@@ -9,12 +9,12 @@ LandOfSquares is a 2D side-view tile based sandbox survival game, using Java2D.
 	- Items
 	- Savable Worlds
 	- Crafting System
+	- Lighting Engine
+	- Day/Night Cycles
 	
 #### Future Plans:
 	- Combat System
 	- Larger worlds? (Currently 1600x400)
-	- Lighting Engine
-	- Day/Night Cycles
 	- Mobs
 	- Storage Blocks (Chests)
 	- Furnaces / Smelters

@@ -1,6 +1,5 @@
 package com.github.maxstupo.landofsquares.world.lighting;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -68,7 +67,7 @@ public class LightingEngine {
     }
 
     public void init() {
-        List<LightingPoint> sources = new ArrayList<LightingPoint>();
+        List<LightingPoint> sources = new LinkedList<LightingPoint>();
 
         if (isSun) {
             for (int x = 0; x < world.getWidth(); x++)
@@ -83,8 +82,8 @@ public class LightingEngine {
                         sourceMap[x][y] = true;
                         lightLevels[x][y] = light;
                     } else {
-                        sourceMap[x][y] = false;
-                        lightLevels[x][y] = 0;
+                        // sourceMap[x][y] = false;
+                        // lightLevels[x][y] = 0;
                     }
 
                 }
@@ -174,14 +173,8 @@ public class LightingEngine {
             LightingPoint current = in.poll();
             out.add(current);
 
-            try {
-                if (current.getLightValue() <= lightLevels[current.getX()][current.getY()] || current.getLightValue() < 0)
-                    continue;
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+            if (current.getLightValue() <= lightLevels[current.getX()][current.getY()] || current.getLightValue() < 0)
                 continue;
-            }
 
             lightLevels[current.getX()][current.getY()] = current.getLightValue();
             sourceMap[current.getX()][current.getY()] = current.isSource();
@@ -197,7 +190,7 @@ public class LightingEngine {
     }
 
     private List<LightingPoint> getSunSources(int x) {
-        List<LightingPoint> sources = new ArrayList<>();
+        List<LightingPoint> sources = new LinkedList<>();
         for (int y = 0; y < world.getHeight() - 1; y++) {
             if (world.getBlock(x, y).getLightBlocking() != 0)
                 break;

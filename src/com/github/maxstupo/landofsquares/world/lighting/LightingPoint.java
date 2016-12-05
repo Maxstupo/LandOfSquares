@@ -57,10 +57,10 @@ public class LightingPoint {
             neighbors.add(new LightingPoint(world, x - 1, y, lightingValue, false));
 
             if (okayUp)
-                neighbors.add(new LightingPoint(world, x + 1, y - 1, lightingValue, false));
+                neighbors.add(new LightingPoint(world, x - 1, y - 1, lightingValue, false));
 
             if (okayDown)
-                neighbors.add(new LightingPoint(world, x + 1, y + 1, lightingValue, false));
+                neighbors.add(new LightingPoint(world, x - 1, y + 1, lightingValue, false));
         }
 
         if (okayDown)

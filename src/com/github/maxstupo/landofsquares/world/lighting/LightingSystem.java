@@ -29,7 +29,7 @@ public class LightingSystem {
     public void updateTile(int x, int y) {
         Block block = world.getBlock(x, y);
         int lightLevel = block.getLightEmiting();
-
+        System.out.println(lightLevel);
         lightingEngineSun.updateTile(x, y, lightLevel);
         lightingEngineSourceBlocks.updateTile(x, y, lightLevel);
     }
@@ -41,7 +41,7 @@ public class LightingSystem {
 
     public float getLightValue(int x, int y) {
 
-        float daylight = getDaylight();
+        float daylight = world.getDaylight();
         float lightValueSun = lightingEngineSun.getLightValue(x, y) / 15.0f * daylight;
         float lightValueSourceBlocks = lightingEngineSourceBlocks.getLightValue(x, y) / 15.0f;
 
@@ -53,8 +53,12 @@ public class LightingSystem {
         return 255 - intensity;
     }
 
-    public float getDaylight() {
-        return .1f;
+    public LightingEngine getLightingEngineSun() {
+        return lightingEngineSun;
+    }
+
+    public LightingEngine getLightingEngineSourceBlocks() {
+        return lightingEngineSourceBlocks;
     }
 
 }

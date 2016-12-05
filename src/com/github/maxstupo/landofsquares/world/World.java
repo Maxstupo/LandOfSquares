@@ -9,6 +9,7 @@ import java.util.ListIterator;
 
 import com.github.maxstupo.flatengine.util.Util;
 import com.github.maxstupo.flatengine.util.math.Rand;
+import com.github.maxstupo.flatengine.util.math.UtilMath;
 import com.github.maxstupo.flatengine.util.math.Vector2f;
 import com.github.maxstupo.flatengine.util.math.Vector2i;
 import com.github.maxstupo.landofsquares.Constants;
@@ -129,13 +130,12 @@ public class World {
         int yMin = Math.max((int) camera.y, 0);
         int yMax = Math.min(((windowHeight / Constants.TILE_SIZE) + Math.round(camera.y)) + 2, tiles[0].length);
 
-        g.setColor(SKY_BLUE);
+        g.setColor(getSkyColor());
         g.fillRect(0, 0, windowWidth, windowHeight);
 
         for (int x = xMin; x < xMax; x++) {
             for (int y = yMin; y < yMax; y++) {
-                if (!getBlock(x, y).compareID(Block.air))
-                    entitiesToRender.add(new TileRenderable(this, x, y));
+                entitiesToRender.add(new TileRenderable(this, x, y));
             }
         }
         Debug.tilesRendered = entitiesToRender.size();
@@ -318,6 +318,47 @@ public class World {
         Block block = getBlock(x, y);
 
         block.onNeighborBlockChange(this, x, y);
+    }
+
+    public float getDaylight() {
+        float timeOfDay = getTimeOfDay();
+        if (timeOfDay > .4F && timeOfDay < .6F) {
+            return 1 - smoothStep(.4F, .6F, timeOfDay);
+        } else if (timeOfDay > .9) {
+            return smoothStep(.9F, 1.1F, timeOfDay);
+        } else if (timeOfDay < .1) {
+            return smoothStep(-.1F, .1F, timeOfDay);
+        } else if (timeOfDay > .5F) {
+            return 0;
+        } else {
+            return 1;
+        }
+
+    }
+
+    /**
+     * returns a float in the range [0,1] 0 is dawn, 0.25 is noon, 0.5 is dusk, 0.75 is midnight
+     **/
+    public float getTimeOfDay() {
+        return ((float) (totalTicks % def.getDayLength())) / def.getDayLength();
+    }
+
+    public Color getSkyColor() {
+        float time = getTimeOfDay();
+        if (time < 0.25f) {
+            return WorldColor.interpolate(def.getWorldColor().getDawnSky(), def.getWorldColor().getNoonSky(), 4 * time);
+        } else if (time < 0.5f) {
+            return WorldColor.interpolate(def.getWorldColor().getNoonSky(), def.getWorldColor().getDuskSky(), 4 * (time - 0.25f));
+        } else if (time < 0.75f) {
+            return WorldColor.interpolate(def.getWorldColor().getDuskSky(), def.getWorldColor().getMidnightSky(), 4 * (time - 0.5f));
+        } else {
+            return WorldColor.interpolate(def.getWorldColor().getMidnightSky(), def.getWorldColor().getDawnSky(), 4 * (time - 0.75f));
+        }
+    }
+
+    public static float smoothStep(float edge0, float edge1, float x) {
+        float t = UtilMath.clampF((x - edge0) / (edge1 - edge0), 0f, 1f);
+        return t * t * (3f - 2f * t);
     }
 
     public void setTotalTicks(long totalTicks) {

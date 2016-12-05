@@ -8,44 +8,66 @@ import com.github.maxstupo.landofsquares.core.LandOfSquares;
  * @author Maxstupo
  */
 public class WorldDefinition {
-	private static final WorldDefinition[] defs = new WorldDefinition[1];
 
-	public static final WorldDefinition earth = new WorldDefinition(0).setGravity(0.03f);
+    private static final WorldDefinition[] defs = new WorldDefinition[1];
 
-	private final int id;
-	private float gravity = 0f;
+    public static final WorldDefinition earth = new WorldDefinition(0).setGravity(0.03f);
 
-	public WorldDefinition(int id) {
-		this.id = id;
-		if (defs[id] == null) {
-			defs[id] = this;
-		} else {
-			LandOfSquares.get().getLog().warn(getClass().getSimpleName(), "Conflicting  {0} ID: {1}", getClass().getSimpleName(), id);
-			throw new IllegalArgumentException("Conflicting WorldDefinition ids: " + id);
-		}
-	}
+    private final int id;
+    private float gravity = 0f;
+    private int dayLength = 20000;
+    private WorldColor worldColor = new WorldColorOverworld();
 
-	public int getID() {
-		return id;
-	}
+    public WorldDefinition(int id) {
+        this.id = id;
+        if (defs[id] == null) {
+            defs[id] = this;
+        } else {
+            LandOfSquares.get().getLog().warn(getClass().getSimpleName(), "Conflicting  {0} ID: {1}", getClass().getSimpleName(), id);
+            throw new IllegalArgumentException("Conflicting WorldDefinition ids: " + id);
+        }
+    }
 
-	public float getGravity() {
-		return gravity;
-	}
+    public int getID() {
+        return id;
+    }
 
-	public WorldDefinition setGravity(float gravity) {
-		this.gravity = gravity;
-		return this;
-	}
+    public float getGravity() {
+        return gravity;
+    }
 
-	public static WorldDefinition get(int id) {
-		if (!Util.isValid(defs, id))
-			return null;
-		return defs[id];
-	}
+    public WorldDefinition setGravity(float gravity) {
+        this.gravity = gravity;
+        return this;
+    }
 
-	@Override
-	public String toString() {
-		return "WorldDef [id=" + id + ", gravity=" + gravity + "]";
-	}
+    public WorldDefinition setDayLength(int dayLength) {
+        this.dayLength = dayLength;
+        return this;
+    }
+
+    public int getDayLength() {
+        return dayLength;
+    }
+
+    public WorldColor getWorldColor() {
+        return worldColor;
+    }
+
+    public WorldDefinition setWorldColor(WorldColor c) {
+        worldColor = c;
+        return this;
+    }
+
+    public static WorldDefinition get(int id) {
+        if (!Util.isValid(defs, id))
+            return null;
+        return defs[id];
+    }
+
+    @Override
+    public String toString() {
+        return "WorldDef [id=" + id + ", gravity=" + gravity + "]";
+    }
+
 }

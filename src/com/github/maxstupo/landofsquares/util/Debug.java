@@ -41,7 +41,7 @@ public class Debug {
     public static void render(Graphics2D g) {
         g.setFont(new Font(Font.MONOSPACED, Font.BOLD, 15));
         if (contains(STATS)) {
-            g.setColor(Color.BLACK);
+            g.setColor(Color.WHITE);
             World w = LandOfSquares.get().getWorldManager().getWorld();
             EntityPlayer p = LandOfSquares.get().getWorldManager().getPlayer();
 
@@ -66,18 +66,22 @@ public class Debug {
                     "DIM: " + w.getName() + "(" + w.getID() + "), " + w.getWidth() + "x" + w.getHeight(), //
 
                     "SP: " + w.getSpawnpoint(), //
-                    "BT: " + block.getBreakTicks(p.getHotbarSelectedItem()));
+                    "BT: " + block.getBreakTicks(p.getHotbarSelectedItem()), //
+                    "TICKS: " + w.getTotalTicks());
 
-            g.setColor(Color.white);
             Vector2i tpos = Calc.drawLocation(pos, LandOfSquares.get().getCamera(), Constants.TILE_SIZE);
             g.drawRect(tpos.x, tpos.y, Constants.TILE_SIZE, Constants.TILE_SIZE);
 
-            g.setColor(Color.black);
             Tile tile = LandOfSquares.get().getWorldManager().getWorld().getTile(pos.x, pos.y);
             UtilGraphics.drawString(g, LandOfSquares.get().getEngine().getMouse().getPosition().x + 15, LandOfSquares.get().getEngine().getMouse().getPosition().y, 5, //
                     "ID: " + block.id, //
                     "DATA: " + tile.getData(), //
-                    "TICK: " + tile.getTick() + " / " + tile.getTickTotal()//
+                    "TICK: " + tile.getTick() + " / " + tile.getTickTotal(), //
+                    "L: " + w.getLightingSystem().getLightValue(pos.x, pos.y), //
+                    "LC: " + w.getLightingSystem().getLightValueConverted(pos.x, pos.y), //
+                    "LSUN: " + w.getLightingSystem().getLightingEngineSun().getLightValue(pos.x, pos.y), //
+                    "LSRC: " + w.getLightingSystem().getLightingEngineSourceBlocks().getLightValue(pos.x, pos.y)//
+
             );
 
         }
