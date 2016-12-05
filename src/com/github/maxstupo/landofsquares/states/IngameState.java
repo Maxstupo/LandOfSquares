@@ -62,6 +62,9 @@ public class IngameState extends AbstractGamestate<State> {
         if (LandOfSquares.get().getEngine().getKeyboard().isKeyDown(Keyboard.KEY_F2)) {
             Debug.toggle(Debug.GRID_CHUNKS_ENTITIES);
         }
+        if (LandOfSquares.get().getEngine().getKeyboard().isKeyDown(Keyboard.KEY_F3)) {
+            Debug.toggle(Debug.GRID_LIGHTING);
+        }
     }
 
 }
