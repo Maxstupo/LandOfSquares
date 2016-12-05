@@ -58,16 +58,16 @@ public class Debug {
                     "SIZE: " + p.getSize(), //
                     "HP: " + p.getHealth() + " / " + p.getHealthMax(), //
                     "WINDOW: " + LandOfSquares.get().getEngine().getWidth() + "x" + LandOfSquares.get().getEngine().getHeight() + " (" + (LandOfSquares.get().getEngine().getWidth() / Constants.TILE_SIZE) + "x" + (LandOfSquares.get().getEngine().getHeight() / Constants.TILE_SIZE) + ")", //
-                    "TR: " + tilesRendered, //
-                    "ER: " + entitiesRendered + " / " + entitiesTotal, //
-                    "EU: " + entitiesUpdated + " / " + entitiesTotal, //
-                    "PR: " + particleEntitiesRendered + " / " + particleEntitiesTotal, //
-                    "PU: " + particleEntitiesUpdated + " / " + particleEntitiesTotal, //
+                    "TILES-RENDERED: " + tilesRendered, //
+                    "ENTITES-RENDERED: " + entitiesRendered + " / " + entitiesTotal, //
+                    "ENTITIES-UPDATED: " + entitiesUpdated + " / " + entitiesTotal, //
+                    "PARTICLES-RENDERED: " + particleEntitiesRendered + " / " + particleEntitiesTotal, //
+                    "PARTICLES-UPDATED: " + particleEntitiesUpdated + " / " + particleEntitiesTotal, //
                     "DIM: " + w.getName() + "(" + w.getID() + "), " + w.getWidth() + "x" + w.getHeight(), //
 
-                    "SP: " + w.getSpawnpoint(), //
-                    "BT: " + block.getBreakTicks(p.getHotbarSelectedItem()), //
-                    "TICKS: " + w.getTotalTicks());
+                    "SPAWNPOINT: " + w.getSpawnpoint(), //
+                    "BREAKTICKS: " + block.getBreakTicks(p.getHotbarSelectedItem()), //
+                    "WORLD-TICKS: " + w.getTotalTicks());
 
             Vector2i tpos = Calc.drawLocation(pos, LandOfSquares.get().getCamera(), Constants.TILE_SIZE);
             g.drawRect(tpos.x, tpos.y, Constants.TILE_SIZE, Constants.TILE_SIZE);
@@ -77,10 +77,10 @@ public class Debug {
                     "ID: " + block.id, //
                     "DATA: " + tile.getData(), //
                     "TICK: " + tile.getTick() + " / " + tile.getTickTotal(), //
-                    "L: " + w.getLightingSystem().getLightValue(pos.x, pos.y), //
-                    "LC: " + w.getLightingSystem().getLightValueConverted(pos.x, pos.y), //
-                    "LSUN: " + w.getLightingSystem().getLightingEngineSun().getLightValue(pos.x, pos.y), //
-                    "LSRC: " + w.getLightingSystem().getLightingEngineSourceBlocks().getLightValue(pos.x, pos.y)//
+                    "Combined Light: " + w.getLightingSystem().getLightValue(pos.x, pos.y), //
+                    "Light Converted: " + w.getLightingSystem().getLightValueConverted(pos.x, pos.y), //
+                    "Light Engine Sun: " + w.getLightingSystem().getLightingEngineSun().getLightValue(pos.x, pos.y), //
+                    "Light Engine Source: " + w.getLightingSystem().getLightingEngineSourceBlocks().getLightValue(pos.x, pos.y)//
 
             );
 
