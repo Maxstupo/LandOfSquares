@@ -2,6 +2,8 @@ package com.github.maxstupo.landofsquares.world;
 
 import java.awt.Color;
 
+import com.github.maxstupo.flatengine.util.math.UtilMath;
+
 /**
  * @author Maxstupo
  * 
@@ -35,6 +37,11 @@ public class WorldColor {
         int dB = (int) (f * (to.getBlue() - from.getBlue()));
         return new Color(from.getRed() + dR, from.getGreen() + dG, from.getBlue() + dB, from.getAlpha());
 
+    }
+
+    public static float smoothStep(float edge0, float edge1, float x) {
+        float t = UtilMath.clampF((x - edge0) / (edge1 - edge0), 0f, 1f);
+        return t * t * (3f - 2f * t);
     }
 
     public Color getGrad_background_top_raining() {

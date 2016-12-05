@@ -9,7 +9,6 @@ import java.util.ListIterator;
 
 import com.github.maxstupo.flatengine.util.Util;
 import com.github.maxstupo.flatengine.util.math.Rand;
-import com.github.maxstupo.flatengine.util.math.UtilMath;
 import com.github.maxstupo.flatengine.util.math.Vector2f;
 import com.github.maxstupo.flatengine.util.math.Vector2i;
 import com.github.maxstupo.landofsquares.Constants;
@@ -323,11 +322,11 @@ public class World {
     public float getDaylight() {
         float timeOfDay = getTimeOfDay();
         if (timeOfDay > .4F && timeOfDay < .6F) {
-            return 1 - smoothStep(.4F, .6F, timeOfDay);
+            return 1 - WorldColor.smoothStep(.4F, .6F, timeOfDay);
         } else if (timeOfDay > .9) {
-            return smoothStep(.9F, 1.1F, timeOfDay);
+            return WorldColor.smoothStep(.9F, 1.1F, timeOfDay);
         } else if (timeOfDay < .1) {
-            return smoothStep(-.1F, .1F, timeOfDay);
+            return WorldColor.smoothStep(-.1F, .1F, timeOfDay);
         } else if (timeOfDay > .5F) {
             return 0;
         } else {
@@ -354,11 +353,6 @@ public class World {
         } else {
             return WorldColor.interpolate(def.getWorldColor().getMidnightSky(), def.getWorldColor().getDawnSky(), 4 * (time - 0.75f));
         }
-    }
-
-    public static float smoothStep(float edge0, float edge1, float x) {
-        float t = UtilMath.clampF((x - edge0) / (edge1 - edge0), 0f, 1f);
-        return t * t * (3f - 2f * t);
     }
 
     public void setTotalTicks(long totalTicks) {
