@@ -2,6 +2,8 @@ package com.github.maxstupo.landofsquares.world;
 
 import com.github.maxstupo.flatengine.util.Util;
 import com.github.maxstupo.landofsquares.core.LandOfSquares;
+import com.github.maxstupo.landofsquares.world.worldcolor.WorldColor;
+import com.github.maxstupo.landofsquares.world.worldcolor.WorldColorOverworld;
 
 /**
  *

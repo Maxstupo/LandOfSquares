@@ -25,6 +25,7 @@ import com.github.maxstupo.landofsquares.world.lighting.LightingSystem;
 import com.github.maxstupo.landofsquares.world.renderable.DepthComparator;
 import com.github.maxstupo.landofsquares.world.renderable.IRenderable;
 import com.github.maxstupo.landofsquares.world.renderable.TileRenderable;
+import com.github.maxstupo.landofsquares.world.worldcolor.WorldColor;
 
 /**
  *

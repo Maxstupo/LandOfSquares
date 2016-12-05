@@ -1,4 +1,4 @@
-package com.github.maxstupo.landofsquares.world;
+package com.github.maxstupo.landofsquares.world.worldcolor;
 
 import java.awt.Color;
 
