@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.Stroke;
 
 import com.github.maxstupo.flatengine.util.UtilGraphics;
+import com.github.maxstupo.flatengine.util.math.Vector2f;
 import com.github.maxstupo.flatengine.util.math.Vector2i;
 import com.github.maxstupo.landofsquares.Constants;
 import com.github.maxstupo.landofsquares.core.LandOfSquares;
@@ -26,6 +27,7 @@ public class Debug {
     public static final int GRID_TILES = 0b000001;
     public static final int STATS = 0b000010;
     public static final int GRID_CHUNKS_ENTITIES = 0b000100;
+    public static final int GRID_LIGHTING = 0b001000;
 
     private static int mode;
 
@@ -91,6 +93,32 @@ public class Debug {
             renderChunkGrid(g, w, w.getEntityManager(), Color.WHITE);
         }
 
+        if (contains(GRID_LIGHTING)) {
+            World w = LandOfSquares.get().getWorldManager().getWorld();
+            renderLightingGrid(g, w, LandOfSquares.get().getCamera(), LandOfSquares.get().getEngine().getWidth(), LandOfSquares.get().getEngine().getHeight(), Color.WHITE);
+        }
+
+    }
+
+    private static void renderLightingGrid(Graphics2D g, World w, Vector2f camera, int windowWidth, int windowHeight, Color gridColor) {
+        int xMin = Math.max((int) camera.x, 0);
+        int xMax = Math.min(((windowWidth / Constants.TILE_SIZE) + Math.round(camera.x)) + 2, w.getWidth());
+        int yMin = Math.max((int) camera.y, 0);
+        int yMax = Math.min(((windowHeight / Constants.TILE_SIZE) + Math.round(camera.y)) + 2, w.getHeight());
+
+        for (int x = xMin; x < xMax; x++) {
+            for (int y = yMin; y < yMax; y++) {
+                Vector2i pos = Calc.drawLocation(x, y, camera, Constants.TILE_SIZE);
+                if (Calc.outofBounds(pos.x, pos.y, Constants.TILE_SIZE, windowWidth, windowHeight))
+                    continue;
+
+                g.setColor(Color.cyan);
+                g.drawRect(pos.x, pos.y, Constants.TILE_SIZE, Constants.TILE_SIZE);
+                g.setColor(Color.white);
+                UtilGraphics.drawString(g, w.getLightingSystem().getLightingEngineSourceBlocks().getLightValue(x, y) + "", pos.x + 5, pos.y);
+                UtilGraphics.drawString(g, w.getLightingSystem().getLightingEngineSun().getLightValue(x, y) + "", pos.x + 5, pos.y + 13);
+            }
+        }
     }
 
     private static void renderChunkGrid(Graphics2D g, World w, EntityManager em, Color gridColor) {
