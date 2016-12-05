@@ -11,7 +11,8 @@ public enum RenderDepth {
 
     PLAYER(0),
 
-    PARTICLE(-10);
+    PARTICLE(-9),
+    LIGHTING(-10);
 
     private final int z;
 

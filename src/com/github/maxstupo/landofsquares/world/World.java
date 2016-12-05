@@ -24,6 +24,7 @@ import com.github.maxstupo.landofsquares.world.generator.Generator;
 import com.github.maxstupo.landofsquares.world.lighting.LightingSystem;
 import com.github.maxstupo.landofsquares.world.renderable.DepthComparator;
 import com.github.maxstupo.landofsquares.world.renderable.IRenderable;
+import com.github.maxstupo.landofsquares.world.renderable.LightingRenderable;
 import com.github.maxstupo.landofsquares.world.renderable.TileRenderable;
 import com.github.maxstupo.landofsquares.world.worldcolor.WorldColor;
 
@@ -136,6 +137,7 @@ public class World {
         for (int x = xMin; x < xMax; x++) {
             for (int y = yMin; y < yMax; y++) {
                 entitiesToRender.add(new TileRenderable(this, x, y));
+                entitiesToRender.add(new LightingRenderable(this, x, y));
             }
         }
         Debug.tilesRendered = entitiesToRender.size();
