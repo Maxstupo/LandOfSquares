@@ -21,6 +21,7 @@ import com.github.maxstupo.landofsquares.item.ItemStack;
 import com.github.maxstupo.landofsquares.util.Debug;
 import com.github.maxstupo.landofsquares.world.block.Block;
 import com.github.maxstupo.landofsquares.world.generator.Generator;
+import com.github.maxstupo.landofsquares.world.lighting.LightingSystem;
 import com.github.maxstupo.landofsquares.world.renderable.DepthComparator;
 import com.github.maxstupo.landofsquares.world.renderable.IRenderable;
 import com.github.maxstupo.landofsquares.world.renderable.TileRenderable;
@@ -54,6 +55,8 @@ public class World {
     private final EntityManager entityManager;
     private final EntityManager particleManager;
 
+    private final LightingSystem lightingSystem;
+
     private final List<IRenderable> entitiesToRender = new ArrayList<>();
 
     public World(int id, String name, WorldDefinition def, Generator gen, int width, int height, long seed) {
@@ -66,6 +69,7 @@ public class World {
         this.seed = seed;
         this.entityManager = new EntityManager(this, Constants.ENTITY_CHUNK_SIZE);
         this.particleManager = new EntityManager(this, Constants.PARTICLE_CHUNK_SIZE);
+        this.lightingSystem = new LightingSystem(this, 15);
     }
 
     public void generate() {
@@ -73,6 +77,8 @@ public class World {
 
         generator.init(seed);
         tiles = generator.generate(this, tiles);
+
+        lightingSystem.init();
 
         isGenerated = true;
     }
@@ -238,6 +244,12 @@ public class World {
         if (modified)
             tiles[x][y].setModified();
         tiles[x][y].setIDAndData(id, data);
+
+        if (id == Block.air.id) {
+            lightingSystem.removeTile(x, y);
+        } else {
+            lightingSystem.updateTile(x, y);
+        }
     }
 
     /**
@@ -401,6 +413,10 @@ public class World {
 
     public EntityManager getParticleManager() {
         return particleManager;
+    }
+
+    public LightingSystem getLightingSystem() {
+        return lightingSystem;
     }
 
     @Override

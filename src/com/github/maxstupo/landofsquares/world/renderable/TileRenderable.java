@@ -1,9 +1,11 @@
 package com.github.maxstupo.landofsquares.world.renderable;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 
 import com.github.maxstupo.flatengine.util.math.Vector2f;
 import com.github.maxstupo.flatengine.util.math.Vector2i;
+import com.github.maxstupo.landofsquares.Constants;
 import com.github.maxstupo.landofsquares.util.Calc;
 import com.github.maxstupo.landofsquares.world.Tile;
 import com.github.maxstupo.landofsquares.world.World;
@@ -33,6 +35,12 @@ public class TileRenderable implements IRenderable {
 
         if (block != null)
             block.render(g, world, pos.x, pos.y, x, y, tile.getData());
+
+        int alpha = world.getLightingSystem().getLightValueConverted(x, y);
+        if (alpha > 0) {
+            g.setColor(new Color(32, 32, 32, alpha));
+            g.fillRect(pos.x, pos.y, Constants.TILE_SIZE, Constants.TILE_SIZE);
+        }
     }
 
     @Override
