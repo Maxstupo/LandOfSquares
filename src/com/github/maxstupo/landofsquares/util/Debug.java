@@ -69,7 +69,10 @@ public class Debug {
 
                     "SPAWNPOINT: " + w.getSpawnpoint(), //
                     "BREAKTICKS: " + block.getBreakTicks(p.getHotbarSelectedItem()), //
-                    "WORLD-TICKS: " + w.getTotalTicks());
+                    "WORLD-TICKS: " + w.getTotalTicks(), //
+                    "DAYLIGHT: " + w.getDaylight(), //
+                    "TIME-OF-DAY: " + w.getTimeOfDay() //
+            );
 
             Vector2i tpos = Calc.drawLocation(pos, LandOfSquares.get().getCamera(), Constants.TILE_SIZE);
             g.drawRect(tpos.x, tpos.y, Constants.TILE_SIZE, Constants.TILE_SIZE);
