@@ -368,8 +368,16 @@ public class World {
     }
 
     public boolean isCollidable(int x, int y) {
-        Block block = getBlock(x, y);
-        return (block != null) ? block.isCollidable() : false;
+        Tile tile = getTile(x, y);
+        if (tile != null) {
+            if (tile.getMetadata().getBoolean("isCollidable"))
+                return true;
+
+            Block block = tile.convertToBlock();
+            if (block != null)
+                return block.isCollidable();
+        }
+        return false;
     }
 
     public boolean isSelectable(int x, int y) {
