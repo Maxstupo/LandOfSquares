@@ -24,6 +24,8 @@
 	<sprite key="block_gravel" path="/res/gfx/block/block_gravel.png" />
 
 	<sprite key="block_torch" path="/res/gfx/block/block_torch.png" />
+	<sprite key="block_door_lower" path="/res/gfx/block/block_door_lower.png" />
+	<sprite key="block_door_upper" path="/res/gfx/block/block_door_upper.png" />
 
 	<sprite key="item_stick" path="/res/gfx/item/item_stick.png" />
 	<sprite key="item_coal" path="/res/gfx/item/item_coal.png" />
@@ -31,7 +33,7 @@
 	<sprite key="item_ingot_iron" path="/res/gfx/item/item_ingot_iron.png" />
 	<sprite key="item_ingot_gold" path="/res/gfx/item/item_ingot_gold.png" />
 
-
+	<sprite key="item_door" path="/res/gfx/item/item_door.png" />
 	<sprite key="item_tool_stone_pickaxe" path="/res/gfx/item/item_tool_stone_pickaxe.png" />
 	<sprite key="item_tool_stone_spade" path="/res/gfx/item/item_tool_stone_spade.png" />
 	<sprite key="item_tool_stone_axe" path="/res/gfx/item/item_tool_stone_axe.png" />

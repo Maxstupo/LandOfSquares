@@ -50,6 +50,10 @@ public class Block {
     public static final Block plant_sapling = new BlockSapling(16).setName("Sapling").setSpriteKey("block_sapling");
     public static final Block torch = new BlockTorch(17).setLightEmiting(8).setName("Torch").setSpriteKey("block_torch");
 
+    public static final Block door_lower = new BlockDoorLower(18).setHardness(1f);
+    public static final Block door_upper = new BlockDoorUpper(19).setHardness(1f);
+    public static final Block door = new BlockDoor(20);
+
     public final int id;
 
     protected float hardness = 1f;

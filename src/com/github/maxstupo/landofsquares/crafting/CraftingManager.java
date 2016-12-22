@@ -30,6 +30,7 @@ public class CraftingManager {
         addRecipe(new ItemStack(Block.plank, 4), new ItemStack(Block.log, 1));
         addRecipe(new ItemStack(Item.stick, 4), new ItemStack(Block.plank, 1));
         addRecipe(new ItemStack(Block.ladder, 4), new ItemStack(Block.plank, 1));
+        addRecipe(new ItemStack(Block.door, 1), new ItemStack(Block.plank, 6));
 
         addRecipe(new ItemStack(Item.tool_stone_pickaxe, 1), new ItemStack(Item.stick, 2), new ItemStack(Block.stone, 3));
         addRecipe(new ItemStack(Item.tool_stone_spade, 1), new ItemStack(Item.stick, 2), new ItemStack(Block.stone, 1));
