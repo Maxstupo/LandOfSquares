@@ -18,6 +18,7 @@ public class Tile {
 
     private int x, y;
     private boolean isModified;
+    private DataStorageObject metadata;
 
     public Tile(World w, int x, int y) {
         this.world = w;
@@ -41,6 +42,8 @@ public class Tile {
         tickTotal = obj.getInt("_tickTotal", -1);
 
         isModified = obj.getBoolean("_isModified");
+        if (obj.hasKey("metadata"))
+            metadata = obj.getStorageObject("_metadata");
     }
 
     public DataStorageObject toStorageObject() {
@@ -53,8 +56,14 @@ public class Tile {
         obj.set("_id", getID());
         obj.set("_data", getData());
         obj.set("_isModified", isModified());
-
+        obj.set("_metadata", getMetadata());
         return obj;
+    }
+
+    public DataStorageObject getMetadata() {
+        if (metadata == null)
+            metadata = new DataStorageObject();
+        return metadata;
     }
 
     public void update() {
@@ -75,8 +84,11 @@ public class Tile {
     }
 
     public void setID(int id) {
-        if (this.id != id)
+        if (this.id != id) {
             tickTotal = -1;
+            if (metadata != null)
+                metadata.clear();
+        }
         this.id = id;
     }
 
