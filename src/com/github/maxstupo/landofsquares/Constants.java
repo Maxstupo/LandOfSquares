@@ -21,7 +21,7 @@ public final class Constants {
 
     public static final int TILE_SIZE = 32;
 
-    public static final Vector2f PLAYER_SIZE = new Vector2f(0.9f, 2.5f);
+    public static final Vector2f PLAYER_SIZE = new Vector2f(0.9f, 1.9f);
     public static final Vector2f DROP_SIZE = new Vector2f(0.5f, 0.5f);
     public static final long DROP_TIME = 60 * 60 * 5; // 5 minutes
 
